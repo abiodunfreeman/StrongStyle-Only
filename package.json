@@ -4,8 +4,9 @@
   "description": "Messaging board for StrongStyle Members",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "NODE_ENV=production node server",
+    "dev": "nodemon server",
+    "css": "sass -w .\\public\\sass\\:.\\public\\styles\\"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
     "pug": "^3.0.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.16"
+    "nodemon": "^2.0.16",
+    "sass": "^1.52.3"
   }
 }
