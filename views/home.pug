@@ -2,3 +2,5 @@ extends layout
 
 block content 
     h1 homepage
+    if user 
+        h1= `welcome ${user.firstname}`

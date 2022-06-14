@@ -10762,15 +10762,24 @@ textarea.form-control-lg {
   box-sizing: border-box;
 }
 
-#signup-container {
+.form-container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
 }
+.form-container a {
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+.form-container a:hover {
+  text-decoration: underline;
+  color: #900;
+}
 
-#sign-up-form {
+form {
   display: flex;
   flex-direction: column;
   max-width: 600px;
@@ -10779,10 +10788,10 @@ textarea.form-control-lg {
   gap: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
-#sign-up-form h1, #sign-up-form .h1 {
+form h1, form .h1 {
   text-align: center;
 }
-#sign-up-form .input-label-split {
+form .input-label-split {
   display: grid;
   grid-template-columns: 100px 1fr;
 }

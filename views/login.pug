@@ -1,0 +1,12 @@
+extends layout 
+block content
+    .form-container
+        form(action="", method="post" id="login-form")
+            .input-container(class="input-label-split")
+                label(for="username") Email: 
+                input(type="text", name="username" id="username" required placeholder="Enter email" autofocus)
+            .input-container(class="input-label-split")
+                label(for="password") Password: 
+                input(type="text", name="password" id="password" required placeholder="Enter password")
+            button(type="submit" class="btn btn-primary") login
+            a(href="/sign-up") dont have an account? 

@@ -1,7 +1,7 @@
 extends layout 
 
 block content 
-    #signup-container
+    .form-container
         form(action="", method="post" id="sign-up-form")
             h1 Sign Up
             .input-container(class="input-label-split")
@@ -20,9 +20,10 @@ block content
                 label(for="password-confirm") Confirm Pass: 
                 input(type="text", name="password-confirm" id="password-confirm" required placeholder="Enter password")
             .input-container(class="btn-group radio-extend" role="group" aria-label="Basic radio toggle button group")
-                <input type="radio" class="btn-check" name="status" id="default" autocomplete="off" checked>
+                <input type="radio" class="btn-check" name="status" id="default" autocomplete="off" checked value='default'>
                 <label class="btn btn-outline-primary" for="default">default</label>
-                <input type="radio" class="btn-check" name="status" id="admin" autocomplete="off">
+                <input type="radio" class="btn-check" name="status" id="admin" autocomplete="off" value='admin'>
                 <label class="btn btn-outline-primary" for="admin">admin</label>
 
-            button(type="submit" class="btn btn-primary") create account     
+            button(type="submit" class="btn btn-primary") create account
+            a(href="/login")      already have an account?

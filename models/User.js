@@ -13,6 +13,7 @@ const UserSchema = mongoose.Schema({
   },
   email: {
     type: String,
+    unique: true,
     lowercase: true,
     required: [true, 'Please add an email'],
     match: [
@@ -20,10 +21,12 @@ const UserSchema = mongoose.Schema({
       'Please enter a valid email',
     ],
   },
+  username: String,
   password: {
     type: String,
     required: [true, 'password required'],
   },
+  status: String,
 });
 
 module.exports = mongoose.model('User', UserSchema);

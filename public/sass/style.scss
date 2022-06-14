@@ -11,14 +11,23 @@ $prefix: 'mo-';
   box-sizing: border-box;
 }
 
-#signup-container {
+.form-container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
+  a {
+    text-align: center;
+    text-decoration: none;
+    color: black;
+  }
+  a:hover {
+    text-decoration: underline;
+    color: $primary;
+  }
 }
-#sign-up-form {
+form {
   display: flex;
   flex-direction: column;
   max-width: 600px;
