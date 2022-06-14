@@ -22,7 +22,9 @@ app.use(express.json());
 app.get('/', (req, res, next) => {
   res.render('home');
 });
-
+app.get('/sign-up', (req, res, next) => {
+  res.render('sign-up');
+});
 //Server
 const PORT = process.env.PORT || 4040;
 connectDB().then(() => {

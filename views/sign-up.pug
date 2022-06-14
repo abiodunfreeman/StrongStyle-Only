@@ -1,0 +1,28 @@
+extends layout 
+
+block content 
+    #signup-container
+        form(action="", method="post" id="sign-up-form")
+            h1 Sign Up
+            .input-container(class="input-label-split")
+                label(for="firstname") First Name: 
+                input(type="text", name="firstname" id="firstname" autofocus required placeholder="First name")
+            .input-container(class="input-label-split")
+                label(for="lastname") Last Name: 
+                input(type="text", name="lastname" id="lastname" required placeholder="Last name")
+            .input-container(class="input-label-split")
+                label(for="email") Email: 
+                input(type="text", name="email" id="email" required placeholder="Enter email")
+            .input-container(class="input-label-split")
+                label(for="password") Password: 
+                input(type="text", name="password" id="password" required placeholder="Enter password")
+            .input-container(class="input-label-split")
+                label(for="password-confirm") Confirm Pass: 
+                input(type="text", name="password-confirm" id="password-confirm" required placeholder="Enter password")
+            .input-container(class="btn-group radio-extend" role="group" aria-label="Basic radio toggle button group")
+                <input type="radio" class="btn-check" name="status" id="default" autocomplete="off" checked>
+                <label class="btn btn-outline-primary" for="default">default</label>
+                <input type="radio" class="btn-check" name="status" id="admin" autocomplete="off">
+                <label class="btn btn-outline-primary" for="admin">admin</label>
+
+            button(type="submit" class="btn btn-primary") create account     
