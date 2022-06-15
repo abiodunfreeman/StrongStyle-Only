@@ -13,6 +13,7 @@ $prefix: 'mo-';
 
 .form-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100vw;
@@ -52,4 +53,12 @@ header {
   gap: 5px;
   align-items: center;
   // height: 70px;
+}
+#auto-login-container {
+  // border: 3px solid blue;
+  display: flex;
+  form {
+    border: none;
+    box-shadow: none;
+  }
 }

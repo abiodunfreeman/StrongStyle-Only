@@ -8,5 +8,15 @@ block content
             .input-container(class="input-label-split")
                 label(for="password") Password: 
                 input(type="text", name="password" id="password" required placeholder="Enter password")
-            button(type="submit" class="btn btn-primary") login
-            a(href="/sign-up") dont have an account? 
+            button(type="submit" class="btn btn-primary") login 
+                
+            a(href="/sign-up") dont have an account? click to sign up !
+        #auto-login-container
+            form(action="", method="post")
+                input(type="hidden", name="username" value="default@default.com")  
+                input(type="hidden", name="password" value="default")
+                button(type="submit" class="btn btn-primary") login as default
+            form(action="", method="post")
+                input(type="hidden", name="username" value="admin@admin.com")  
+                input(type="hidden", name="password" value="admin")
+                button(type="submit" class="btn btn-primary") login as admin

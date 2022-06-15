@@ -10764,6 +10764,7 @@ textarea.form-control-lg {
 
 .form-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100vw;
@@ -10805,6 +10806,14 @@ header {
   border: 2px solid blue;
   gap: 5px;
   align-items: center;
+}
+
+#auto-login-container {
+  display: flex;
+}
+#auto-login-container form {
+  border: none;
+  box-shadow: none;
 }
 
 /*# sourceMappingURL=style.css.map */
