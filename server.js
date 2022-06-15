@@ -7,6 +7,7 @@ const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('./models/User');
+const bcrypt = require('bcryptjs');
 const app = express();
 
 // Load env vars
@@ -32,10 +33,14 @@ passport.use(
       if (!user) {
         return done(null, false, { message: 'Incorrect username' });
       }
-      if (user.password !== password) {
-        return done(null, false, { message: 'Incorrect password' });
-      }
-      return done(null, user);
+      bcrypt.compare(password, user.password, (err, res) => {
+        if (res) {
+          // passwords match!
+          return done(null, user);
+        } else {
+          return done(null, false, { message: 'Incorrect password' });
+        }
+      });
     });
   })
 );
@@ -59,9 +64,11 @@ app.use((req, res, next) => {
 });
 // Routers
 const signUp = require('./routes/signUp');
-const login = require('./routes/login');
+
+const admin = require('./routes/admin');
 app.get('/', (req, res, next) => {
   console.log(req.user);
+  console.log('homepage served');
   res.render('home', { user: req.user });
 });
 app.use('/sign-up', signUp);
@@ -83,10 +90,12 @@ app.get('/logout', (req, res) => {
     res.redirect('/');
   });
 });
+
+app.use('/admin', admin);
 //Server
 const PORT = process.env.PORT || 4040;
 connectDB().then(() => {
-  app.listen(PORT, () => {
+  var server = app.listen(PORT, () => {
     console.log(
       ` Server running in ${process.env.NODE_ENV} , App listening on port ${PORT}!`
         .yellow.bold

@@ -5,9 +5,13 @@ html
     link(rel='stylesheet', href='/styles/style.css')
   body
     header 
-        a(href="/" class="btn btn-primary") home 
-        a(href="/login" class="btn btn-primary") login
-        a(href="/sign-up" class="btn btn-primary") sign up
-        if user
+        a(href="/" class="btn btn-primary") home
+        if user 
             a(href="/logout" class="btn btn-primary") logout
+            if user.status === "admin"
+                a(href="/admin" class="btn btn-primary") admin panel
+            p= `Welcome, ${user.firstname}`
+        else  
+            a(href="/login" class="btn btn-primary") login
+            a(href="/sign-up" class="btn btn-primary") sign up
     block content

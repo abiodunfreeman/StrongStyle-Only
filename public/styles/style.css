@@ -10800,4 +10800,11 @@ form .input-label-split {
   grid-column: 1/-1;
 }
 
+header {
+  display: flex;
+  border: 2px solid blue;
+  gap: 5px;
+  align-items: center;
+}
+
 /*# sourceMappingURL=style.css.map */
