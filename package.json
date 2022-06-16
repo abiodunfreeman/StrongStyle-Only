@@ -4,7 +4,7 @@
   "description": "Messaging board for StrongStyle Members",
   "main": "server.js",
   "scripts": {
-    "start": "NODE_ENV=production node server",
+    "start": "node server",
     "dev": "nodemon server",
     "css": "sass -w .\\public\\sass\\:.\\public\\styles\\"
   },
@@ -35,5 +35,8 @@
   "devDependencies": {
     "nodemon": "^2.0.16",
     "sass": "^1.52.3"
+  },
+  "engines": {
+    "node": "16.15.0"
   }
 }
