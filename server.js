@@ -107,9 +107,9 @@ connectDB().then(() => {
     );
   });
 });
-// Handle unhandled promise
-process.on('unhandledRejection', (err, promise) => {
-  console.log(`Error: ${err.message}`.red);
-  // Close server & exit process
-  app.close(() => process.exit(1));
-});
+// // Handle unhandled promise
+// process.on('unhandledRejection', (err, promise) => {
+//   console.log(`Error: ${err.message}`.red);
+//   // Close server & exit process
+//   server.close(() => process.exit(1));
+// });
