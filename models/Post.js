@@ -8,7 +8,8 @@ const PostSchema = mongoose.Schema(
     },
     message: {
       type: String,
-      required: [true, 'please add a message'],
+      required: [true, 'BANNED'],
+      trim: true,
     },
     creator: {
       type: mongoose.Schema.Types.ObjectId,

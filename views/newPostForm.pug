@@ -9,7 +9,13 @@ block content
                     input(type="text", name="title" id="title" autofocus required placeholder="post title...")
                 .input-container(class="input-label-split")
                     label(for="message") Message:
-                    textarea(name="message", cols="70", rows="7" id='message' required placeholder='Write your awesome thing to share here...') 
+                    textarea(name="message", cols="70", rows="7" id='message' required placeholder='Write your awesome thing to share here...')
+                .input-container(class="input-label-split")
+                    label(for="topics") Topics:
+                    <select id="topics" name="topics">
+                        <option value="General">General</option>
+                        <option value="Create Topic">Create Topic</option>
+                    </select> 
                 button(type="submit" class="btn btn-primary") publish
     else 
         h1 please login to create a post
