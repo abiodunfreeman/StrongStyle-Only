@@ -8,13 +8,15 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('./models/User');
 const bcrypt = require('bcryptjs');
+const compression = require('compression');
 const app = express();
 
 // Load env vars
 dotenv.config({ path: './config/config.env' });
 
-// serve static files in /public
-app.use(express.static(__dirname + '/public'));
+app.use(compression()); //Compress all routes
+
+app.use(express.static(path.join(__dirname, 'public'))); // Serves static files
 
 // sets view engine to PUG
 app.set('views', './views');
