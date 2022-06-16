@@ -9,12 +9,14 @@ const LocalStrategy = require('passport-local').Strategy;
 const User = require('./models/User');
 const bcrypt = require('bcryptjs');
 const compression = require('compression');
+const helmet = require('helmet');
 const app = express();
 
 // Load env vars
 dotenv.config({ path: './config/config.env' });
 
 app.use(compression()); //Compress all routes
+app.use(helmet());
 
 app.use(express.static(path.join(__dirname, 'public'))); // Serves static files
 
