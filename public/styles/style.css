@@ -10792,7 +10792,7 @@ form {
 form h1, form .h1 {
   text-align: center;
 }
-form .input-label-split {
+form .input-container {
   display: grid;
   grid-template-columns: 100px 1fr;
 }

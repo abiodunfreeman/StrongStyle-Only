@@ -1,0 +1,15 @@
+extends layout
+block content
+    if (user)
+        .form-container
+            form(action="", method="post" id="sign-up-form")
+                h1 Create a new post
+                .input-container(class="input-label-split")
+                    label(for="title") Title: 
+                    input(type="text", name="title" id="title" autofocus required placeholder="post title...")
+                .input-container(class="input-label-split")
+                    label(for="message") Message:
+                    textarea(name="message", cols="70", rows="7" id='message' required placeholder='Write your awesome thing to share here...') 
+                button(type="submit" class="btn btn-primary") publish
+    else 
+        h1 please login to create a post

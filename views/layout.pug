@@ -6,11 +6,14 @@ html
   body
     header 
         a(href="/" class="btn btn-primary") home
-        if user 
+        a(href="/post/all" class="btn btn-primary") view post 
+        if currentUser
+            a(href=`/post/new` class="btn btn-primary") Create Post 
             a(href="/logout" class="btn btn-primary") logout
-            if user.status === "admin"
+            if currentUser.status === "admin"
                 a(href="/admin" class="btn btn-primary") admin panel
-            p= `Welcome, ${user.firstname}`
+            a(href=`/user/${currentUser._id}/update-status` class="btn btn-primary") change status
+            p= `Welcome, ${currentUser.firstname}` 
         else  
             a(href="/login" class="btn btn-primary") login
             a(href="/sign-up" class="btn btn-primary") sign up

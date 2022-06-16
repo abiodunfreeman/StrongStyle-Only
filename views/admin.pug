@@ -1,3 +1,14 @@
 extends layout
-block content 
-    h1=` admin panel for `
+block content
+    #admin-container
+        h1 Admin Control Panel
+        if users
+            ul  
+                for user in users
+                    li 
+                        p= user.firstname + " " + user.lastname
+                        p= user.username 
+                        p= `Status - ${user.status}` 
+        else 
+            a(href="/admin/users")
+                button(type="button" class='btn btn-primary') view users  

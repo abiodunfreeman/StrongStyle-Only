@@ -1,0 +1,23 @@
+extends layout
+block content 
+    .form-container
+        if success 
+            h4 settings updated succesfully 
+        form(action="" method='post')
+            h1= `Update Settings`
+            p= `current status - ${user.status}`
+            //- .input-container 
+            //- label(for="username") Username: 
+            //- input(type="text" name='username' id='username' placeholder=`${user.username}`)
+            div(class="btn-group radio-extend" role="group" aria-label="Basic radio toggle button group")
+                if user.status === 'default'
+                    <input type="radio" class="btn-check" name="status" id="default" autocomplete="off" checked value='default'>
+                    <label class="btn btn-outline-primary" for="default">default</label>
+                    <input type="radio" class="btn-check" name="status" id="admin" autocomplete="off" value='admin'>
+                    <label class="btn btn-outline-primary" for="admin">admin</label>
+                else 
+                    <input type="radio" class="btn-check" name="status" id="default" autocomplete="off" value='default'>
+                    <label class="btn btn-outline-primary" for="default">default</label>
+                    <input type="radio" class="btn-check" name="status" id="admin" autocomplete="off" checked value='admin'>
+                    <label class="btn btn-outline-primary" for="admin">admin</label>
+            button(type="submit" class="btn btn-primary") update settings

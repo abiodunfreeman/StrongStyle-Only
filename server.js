@@ -64,12 +64,11 @@ app.use((req, res, next) => {
 });
 // Routers
 const signUp = require('./routes/signUp');
-
+const userRoute = require('./routes/user');
 const admin = require('./routes/admin');
+const postRoute = require('./routes/post');
 app.get('/', (req, res, next) => {
-  console.log(req.user);
-  console.log('homepage served');
-  res.render('home', { user: req.user });
+  res.render('home', { currentUser: req.user });
 });
 app.use('/sign-up', signUp);
 app.get('/login', (req, res, next) => {
@@ -83,15 +82,19 @@ app.post(
   })
 );
 app.get('/logout', (req, res) => {
+  console.log(`${req.user.firstname} Logged Out`);
   req.logout(function (err) {
     if (err) {
       return next(err);
     }
+
     res.redirect('/');
   });
 });
 
 app.use('/admin', admin);
+app.use('/user', userRoute);
+app.use('/post', postRoute);
 //Server
 const PORT = process.env.PORT || 4040;
 connectDB().then(() => {
@@ -106,5 +109,5 @@ connectDB().then(() => {
 process.on('unhandledRejection', (err, promise) => {
   console.log(`Error: ${err.message}`.red);
   // Close server & exit process
-  server.close(() => process.exit(1));
+  app.close(() => process.exit(1));
 });
