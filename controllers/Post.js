@@ -1,5 +1,7 @@
 const Post = require('../models/Post');
 const Topic = require('../models/Topic');
+const { DateTime } = require('luxon');
+const User = require('../models/User');
 // @desc Show new post form
 // @route GET /post/new
 // @access Public
@@ -14,9 +16,10 @@ exports.createPost = async (req, res, next) => {
   try {
     if (!req.user) res.redirect('/login');
     const topic = await Topic.findOne({ name: req.body.topic });
+    const user = await User.findById(req.user._id);
     const post = await Post.create({
       ...req.body,
-      creator: req.user._id,
+      creator: user,
       topic,
     });
     console.log(post);

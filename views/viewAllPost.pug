@@ -6,6 +6,7 @@ block content
                 li 
                     h3= post.title 
                     p= post.message
+                    p= post.date
                     if currentUser
                         a(href=`/user/${post.creator}` class="btn btn-primary") view user 
                         if currentUser.status === 'admin'

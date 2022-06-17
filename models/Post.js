@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const { DateTime } = require('luxon');
 const PostSchema = mongoose.Schema(
   {
     title: {
@@ -20,6 +20,10 @@ const PostSchema = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Topic',
       required: true,
+    },
+    date: {
+      type: String,
+      default: DateTime.fromJSDate(Date.now).toLocaleString(DateTime.DATE_MED),
     },
   },
   { timestamps: true }
