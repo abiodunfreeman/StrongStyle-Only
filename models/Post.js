@@ -16,6 +16,11 @@ const PostSchema = mongoose.Schema(
       ref: 'User',
       required: true,
     },
+    topic: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Topic',
+      required: true,
+    },
   },
   { timestamps: true }
 );

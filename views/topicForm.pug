@@ -7,6 +7,8 @@ block content
                 .input-container(class="input-label-split")
                     label(for="topicName") Title: 
                     input(type="text", name="name" id="topicName" autofocus required placeholder="topic title...")
+                    if err 
+                        p= err
                 button(type="submit" class="btn btn-primary") create topic
     else 
         h1 please login to create a topic

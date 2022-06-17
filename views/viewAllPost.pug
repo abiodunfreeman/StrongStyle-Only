@@ -6,6 +6,8 @@ block content
                 li 
                     h3= post.title 
                     p= post.message
-                    if currentUser.status === 'admin'
-                        form(action=`/post/${post._id}/delete`, method="post")
-                            button(type="submit" class="btn btn-primary") delete post
+                    if currentUser
+                        a(href=`/user/${post.creator}` class="btn btn-primary") view user 
+                        if currentUser.status === 'admin'
+                            form(action=`/post/${post._id}/delete`, method="post")
+                                button(type="submit" class="btn btn-primary") delete post

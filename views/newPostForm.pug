@@ -12,7 +12,7 @@ block content
                     textarea(name="message", cols="70", rows="7" id='message' required placeholder='Write your awesome thing to share here...')
                 .input-container(class="input-label-split")
                     label(for="topics") Topics:
-                    <select id="topics" name="topics">
+                    <select id="topics" name="topic">
                         if topics 
                             for topic in topics 
                                 option(value=`${topic.name}`)= topic.name 

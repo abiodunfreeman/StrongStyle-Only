@@ -1,6 +1,7 @@
 extends layout 
 
 block content 
-    h1 homepage
     if currentUser 
         h1= `welcome ${currentUser.firstname}`
+    else 
+        h1 hi guest

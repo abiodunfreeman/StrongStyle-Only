@@ -5,15 +5,15 @@ html
     link(rel='stylesheet', href='/styles/style.css')
   body
     header 
-        a(href="/" class="btn btn-primary") home
+        a(href="/" class="btn btn-primary") Home
         a(href="/post/all" class="btn btn-primary") view post
         if currentUser
             a(href=`/post/new` class="btn btn-primary") Create Post 
-              a(href="/post/topic/create" class="btn btn-primary") Create Butt
-            a(href="/logout" class="btn btn-primary") logout
+              a(href="/post/topic/create" class="btn btn-primary") Create Topic
+            a(href="/logout" class="btn btn-primary") Logout
             if currentUser.status === "admin"
-                a(href="/admin" class="btn btn-primary") admin panel
-            a(href=`/user/${currentUser._id}/update-status` class="btn btn-primary") change status
+                a(href="/admin" class="btn btn-primary") Admin Panel
+            a(href=`/user/${currentUser._id}/update-status` class="btn btn-primary") Change Status
             p= `Welcome, ${currentUser.firstname}` 
         else  
             a(href="/login" class="btn btn-primary") login

@@ -1,0 +1,14 @@
+extends layout 
+block content 
+    if user 
+        h1= `${user.firstname}'s Home Page`
+        h2= `Fullname: ${user.firstname} ${user.lastname}`
+        h2= `ID - ${user._id}`
+        h2= `Status - ${user.status}`
+        h3= "users post"
+            if posts 
+                ul 
+                    for post in posts 
+                        .post-card 
+                            h2= post.title 
+                            p= post.message

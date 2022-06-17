@@ -13,7 +13,12 @@ exports.viewPostForm = async (req, res, next) => {
 exports.createPost = async (req, res, next) => {
   try {
     if (!req.user) res.redirect('/login');
-    const post = await Post.create({ ...req.body, creator: req.user._id });
+    const topic = await Topic.findOne({ name: req.body.topic });
+    const post = await Post.create({
+      ...req.body,
+      creator: req.user._id,
+      topic,
+    });
     console.log(post);
     res.redirect('/post/new');
   } catch (err) {
@@ -56,7 +61,7 @@ exports.viewCreateTopic = (req, res, next) => {
     res.status(200).render('topicForm', { user: req.user });
   } catch (err) {
     console.log(`${err}`.red);
-    res.status(400).json({ success: false, err: err.message });
+    res.status(400).render('topicForm', { user: req.user, err });
   }
 };
 // @desc Create topic
