@@ -64,7 +64,6 @@ exports.viewOneUser = async (req, res, next) => {
   try {
     const user = await User.findById(req.params.id);
     const posts = await Post.find({ creator: user._id });
-    console.log(posts);
     if (!user) res.status(400).json({ success: false, err: err.message });
     res.status(200).render('viewOneUser', { user, posts });
   } catch (err) {
@@ -72,12 +71,13 @@ exports.viewOneUser = async (req, res, next) => {
     res.status(400).json({ success: false, err: err.message });
   }
 };
-// @desc DELETE ONE user
+// @desc DELETE ONE user and all associated post
 // @route POST /user/:id/delete
 // @access PRIVATE
 exports.deleteUser = async (req, res, next) => {
   try {
     const user = await User.findByIdAndDelete(req.body.id);
+    const posts = await Post.deleteMany({ creator: user._id });
     res.redirect('/user/all');
   } catch (err) {
     console.log(`${err}`.red);

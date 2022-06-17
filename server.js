@@ -86,14 +86,17 @@ app.post(
   })
 );
 app.get('/logout', (req, res) => {
-  console.log(`${req.user.firstname} Logged Out`);
-  req.logout(function (err) {
-    if (err) {
-      return next(err);
-    }
+  if (req.user) {
+    console.log(`${req.user.firstname} Logged Out`);
+    req.logout(function (err) {
+      if (err) {
+        return next(err);
+      }
 
-    res.redirect('/');
-  });
+      res.redirect('/');
+    });
+  }
+  res.redirect('/');
 });
 
 app.use('/admin', admin);
