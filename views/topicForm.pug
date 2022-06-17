@@ -1,0 +1,12 @@
+extends layout
+block content
+    if (user)
+        .form-container
+            form(action="", method="post" id="sign-up-form")
+                h1 Create a new topic
+                .input-container(class="input-label-split")
+                    label(for="topicName") Title: 
+                    input(type="text", name="name" id="topicName" autofocus required placeholder="topic title...")
+                button(type="submit" class="btn btn-primary") create topic
+    else 
+        h1 please login to create a topic

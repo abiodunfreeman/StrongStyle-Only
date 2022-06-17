@@ -6,9 +6,10 @@ html
   body
     header 
         a(href="/" class="btn btn-primary") home
-        a(href="/post/all" class="btn btn-primary") view post 
+        a(href="/post/all" class="btn btn-primary") view post
         if currentUser
             a(href=`/post/new` class="btn btn-primary") Create Post 
+              a(href="/post/topic/create" class="btn btn-primary") Create Butt
             a(href="/logout" class="btn btn-primary") logout
             if currentUser.status === "admin"
                 a(href="/admin" class="btn btn-primary") admin panel

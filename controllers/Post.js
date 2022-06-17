@@ -1,9 +1,11 @@
 const Post = require('../models/Post');
+const Topic = require('../models/Topic');
 // @desc Show new post form
 // @route GET /post/new
 // @access Public
-exports.viewPostForm = (req, res, next) => {
-  res.render('newPostForm', { user: req.user });
+exports.viewPostForm = async (req, res, next) => {
+  const topics = await Topic.find();
+  res.render('newPostForm', { user: req.user, topics });
 };
 // @desc Create new post
 // @route POST /post/new
@@ -41,6 +43,29 @@ exports.deletePost = async (req, res, next) => {
     console.log('post delete ran'.red.bold.underline);
     const post = await Post.findByIdAndDelete(req.params.id);
     res.status(200).redirect('/post/all');
+  } catch (err) {
+    console.log(`${err}`.red);
+    res.status(400).json({ success: false, err: err.message });
+  }
+};
+// @desc GET topic
+// @route GET /post/topic/create
+// @access Private
+exports.viewCreateTopic = (req, res, next) => {
+  try {
+    res.status(200).render('topicForm', { user: req.user });
+  } catch (err) {
+    console.log(`${err}`.red);
+    res.status(400).json({ success: false, err: err.message });
+  }
+};
+// @desc Create topic
+// @route POST /post/topic/create
+// @access Private
+exports.createTopic = async (req, res, next) => {
+  try {
+    const topic = Topic.create({ ...req.body });
+    res.redirect('/');
   } catch (err) {
     console.log(`${err}`.red);
     res.status(400).json({ success: false, err: err.message });

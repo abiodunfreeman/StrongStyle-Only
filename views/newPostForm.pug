@@ -13,8 +13,9 @@ block content
                 .input-container(class="input-label-split")
                     label(for="topics") Topics:
                     <select id="topics" name="topics">
-                        <option value="General">General</option>
-                        <option value="Create Topic">Create Topic</option>
+                        if topics 
+                            for topic in topics 
+                                option(value=`${topic.name}`)= topic.name 
                     </select> 
                 button(type="submit" class="btn btn-primary") publish
     else 
